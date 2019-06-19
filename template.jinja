@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Checklists for flight simulation">
+    <meta name="author" content="Nicolas Deutschmann">
+
+    <link rel="icon" href="persologo.ico">
+
+    <title>Checklister</title>
+
+    <!-- FONTS -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:900,500' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="starter-template.css" rel="stylesheet">
+   <base target="_blank">
+
+   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>   
+
+  </head>
+  <body>
+    <div id="navbar-include">
+
+    </div>
+    <script>
+    $(function(){
+      $("#navbar-include").load("navbar.html");
+    });
+    </script>
+
+   <div class="starter-template">
+          <div class="container-fluid checklist">
+            <div class="row">
+              <h1>{{checklist.title}}</h1>  
+              {% for section in checklist.sections %}
+                <div class="col-xs-12">                
+                <div class="checklist-section">
+                  <h2>{{section.name}}</h2>
+                  <div class="container-fluid">
+                    {% for row in section.rows%}
+                    <!-- ITEM -->                    
+                    {% if row.action != "subsection" %}
+                    <div class="row checklist-row">
+                      <div class="col-xs-6 checklist-item">
+                        {{row.item}}
+                      </div>
+                      <div class="col-xs-6 checklist-action">
+                        {{row.action}}
+                      </div>                  
+                    </div>
+                    {% else %}
+                    <div class="row checklist-row">
+                        <h3>{{row.item}}</h3>                
+                    </div>
+                    {% endif %}
+                    <!-- ITEM -->                     
+                    {% endfor %}
+                  </div>
+                </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+            <footer class="navbar-fixed-bottom">
+              <div class="container">
+                <span>FOR SIMULATION PURPOSE ONLY DO NOT USE FOR REAL FLIGHT</span>
+              </div>
+            </footer>          
+  </div>
+
+
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+    <!-- <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script> -->
+    <!-- <script src="dist/js/jquery.js"></script> -->
+    <script src="dist/js/bootstrap.js"></script>
+    <script src="starter-template.js"></script>
+    <!-- JQuery tooltip init -->
+    <script>
+    $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+    });
+    </script>
+
+
+  </body>
+</html>

@@ -1,0 +1,21 @@
+---
+title: Cold start
+sections:
+    pre-start:
+        Parking Brake: Engaged
+        Master Arm: Safe
+        BATT Switch: on
+        brake pressure: "> 300 LBS"
+        FIRE & bleed test: Chan A
+        Reset: cycle batt
+        FIRE & bleed test: Chan B        
+    start procedure:
+        apu start: subsection
+        apu acc: off
+        apu: on
+        apu light: on
+        right engine power: subsection
+        r throt: off
+        eng crank: right
+
+   
