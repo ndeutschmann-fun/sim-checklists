@@ -15,7 +15,11 @@ class ChecklistRow:
 class ChecklistSection:
 	def __init__(self,name,rows):
 		self.name = str(name)
-		self.rows = [ChecklistRow(item,action) for (item,action) in rows.items()]
+		# rows is a list whose elements are dictionnary with only one entry
+		# We get this pair of key,value by converting row.item to a list and
+		# accessing the first element
+		# This is then turned into a sequence of arguments
+		self.rows = [ChecklistRow(*(list(row.items())[0])) for row in rows]
 
 class Checklist:
 	def __init__(self,yaml_input):
@@ -26,20 +30,9 @@ class Checklist:
 			print("YAML input must have a title and a list of sections")
 			raise
 
-		try:
-			assert isinstance(sections_yaml, dict)
-		except AssertionError as e:
-			print("YAML 'sections' must be a dict")
-			raise
-
 		self.sections=[]
 
 		for name,rows in sections_yaml.items():
-			try:
-				assert isinstance(rows, dict)
-			except AssertionError as e:
-				print("Values of 'sections' must be dicts")
-				raise
 			self.sections.append(ChecklistSection(name,rows))
 
 
@@ -54,10 +47,6 @@ if __name__ == "__main__":
 
 	with open(yaml_filename) as file_:
 		yaml_data = load(file_,Loader=Loader)
-		# #TODO DEV remove this debug before pushing
-		# import ipdb
-		# ipdb.set_trace()
-		# #TODO DEV end of debug statement
 		checklist = Checklist(yaml_data)
 
 	with open('template.jinja') as file_:
