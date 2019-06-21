@@ -5,18 +5,33 @@ sections:
         - Parking Brake: Engaged
         - Master Arm: Safe
         - BATT Switch: on
-        - brake pressure: "> 300 LBS"
+        - brake pressure: "> 3000 LBS"
         - FIRE & bleed test: Chan A
         - Reset: cycle batt
         - FIRE & bleed test: Chan B        
     start procedure:
-        - apu start: subsection
+        - subsection: apu start
         - apu acc: off
         - apu: on
         - apu light: on
-        - right engine power: subsection
+
+        - subsection: right engine power
         - r throt: off
         - eng crank: right
+        - R rpm: \> 25%
         - r throt: idle
+        - Monitor: r egt > 750C
+        - R RPM: stable 63%
+        - GPWS: "pull-up"
+        - mast caut: press once
+        - Bleed air: full clockwise
+
+        - subsection: screens and hud
+        - L&R DDI: DAY/NIGHT
+        - HUD BRT: clockwise
+        - BLK LVL: clockwise
+        - alt switch: rdr
+        - att swtich: auto
+        - canopy: close
 
    

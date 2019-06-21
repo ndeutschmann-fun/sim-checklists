@@ -48,7 +48,7 @@
                   <div class="container-fluid">
                     {% for row in section.rows%}
                     <!-- ITEM -->                    
-                    {% if row.action != "subsection" %}
+                    {% if row.item != "subsection" %}
                     <div class="row checklist-row">
                       <div class="col-xs-6 checklist-item">
                         {{row.item}}
@@ -59,7 +59,7 @@
                     </div>
                     {% else %}
                     <div class="row checklist-row">
-                        <h3>{{row.item}}</h3>                
+                        <h3>{{row.action}}</h3>                
                     </div>
                     {% endif %}
                     <!-- ITEM -->                     

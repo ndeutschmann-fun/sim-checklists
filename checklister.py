@@ -14,7 +14,7 @@ class ChecklistRow:
 
 class ChecklistSection:
 	def __init__(self,name,rows):
-		self.name = str(name)
+		self.name=name
 		# rows is a list whose elements are dictionnary with only one entry
 		# We get this pair of key,value by converting row.item to a list and
 		# accessing the first element
