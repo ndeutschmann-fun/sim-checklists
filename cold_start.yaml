@@ -8,13 +8,13 @@ sections:
         - brake pressure: "> 3000 LBS"
         - FIRE & bleed test: Chan A
         - Reset: cycle batt
-        - FIRE & bleed test: Chan B        
+        - FIRE & bleed test: Chan B
+        - seat: arm        
     start procedure:
         - subsection: apu start
         - apu acc: off
         - apu: on
         - apu light: on
-
         - subsection: right engine power
         - r throt: off
         - eng crank: right
@@ -22,16 +22,78 @@ sections:
         - r throt: idle
         - Monitor: r egt > 750C
         - R RPM: stable 63%
-        - GPWS: "pull-up"
+        - GPWS BIT: "Roll Left!"
+        - GPWS BIT: "Flight controls!"
+        - right warning panel: \"R GEN\" OFF        
+        - LT TEST SW: TEST 5s
         - mast caut: press once
         - Bleed air: full clockwise
-
-        - subsection: screens and hud
+        - subsection: Screens and hud
         - L&R DDI: DAY/NIGHT
+        - AMPCD (mid. DDI): BRT clockwise
         - HUD BRT: clockwise
         - BLK LVL: clockwise
         - alt switch: rdr
         - att swtich: auto
         - canopy: close
+        - subsection: systems
+        - INS ALIGN: GND/CV
+        - left DDI: R ENG, HYD 2 NO CAUT.
+        - LEFT DDI: FCS
+        - MASTER CAUTIOn: press twice
+        - FCS RESET: press
+        - FCS FAULT: check cleared
+        - RIGHT DDI (BIT): STOP
+        - subsection: right engine power
+        - l throt: "off"
+        - eng crank: left
+        - l rpm: \> 25%
+        - l throt: idle
+        - Monitor: l egt > 750C
+        - l RPM: stable 63%
+        - right warning panel: \"L GEN\" OFF
+        - left DDI: L ENG, HYD 1 NO CAUT.
+        - APU: auto shut-down
+        - subsection: systems
+        - obogs: "on"
+        - Hook bypass: set
+        - Flaps: half
+        - anti skid: ON(GND)/OFF(CV)
+        - RADAR: opr
+        - subsection: FCS bit
+        - right ddi: FCS-MC osb
+        - MC1/2: go
+        - FCSA/B: PBIT GO
+        - FCS BIT: execute
+        - FCSA/B: wait for go
+        - subsection: systems
+        - AMPCD: wait INS ALIGN
+        - INS: nav
+        - RARAR ALT: 200(GND)/80(CV)
+        - STBY ATT: uncage
+        - RWR: power
+        - ECM: stby
+
+        - subsection: takeoff setup
+        - ztod: display
+        - t/o trim: set
+        - piot heat: auto 
+        - left ddi: HUD
+        - right ddi: fcs
+        - bingo fuel: set
+
+        - subsection: lights
+        - STROBE: "on"
+        - POSition: BRT
+        - formation: brt
+        - landing light: "on"
+
+        - subsection: pre-taxi
+        - check apu: "off"
+        - wheel chocks: "off"
+        - clearance: ok
+        - parking brakes: "off"
+
+
 
    
